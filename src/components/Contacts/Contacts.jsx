@@ -1,13 +1,20 @@
 import ContactItem from "../ContactItem";
-import PropTypes from 'prop-types';
 import { Contact } from './Contacts.styled'
+import { useSelector } from 'react-redux'
+import PropTypes from 'prop-types';
+import { getFilter } from '../Redux/filterSlice'
+import { getContacts } from '../Redux/contactsSlice'
 
-const Contacts = ({ contacts, onDeleteContact }) => {
-  
+const Contacts = () => {
+  const filter = useSelector(getFilter)
+  const contacts = useSelector(getContacts)
+  const normalizedFilter = filter.toLowerCase();
+  const visContacts = contacts.filter(contact => contact.name.toLowerCase().includes(normalizedFilter))
+
   return (
     <Contact>
-      {contacts.map(({ id, name, number }) => (
-        <ContactItem key={id} id={id} name={name} number={number} onDeleteContact={onDeleteContact} />
+      {visContacts.map(({ id, name, number }) => (
+        <ContactItem key={id} id={id} name={name} number={number} />
           ))}
     </Contact>
   )
@@ -21,7 +28,6 @@ Contacts.propTypes = {
       id: PropTypes.string.isRequired,
       name: PropTypes.string.isRequired,
       number: PropTypes.string.isRequired,
-    }).isRequired
-  ).isRequired,
-  onDeleteContact: PropTypes.func.isRequired,
+    }).isRequired,
+  ),
 };

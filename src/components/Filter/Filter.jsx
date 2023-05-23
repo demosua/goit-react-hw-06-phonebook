@@ -1,14 +1,16 @@
 import React from "react";
+import { useSelector, useDispatch } from 'react-redux'
+import { filterChange, getFilter } from '../Redux/filterSlice'
 import PropTypes from 'prop-types';
-import { nanoid } from "nanoid";
 import { Lbl, Inp } from './Filter.styled'
 
-const Filter = ({ value, onChange }) => {
-  const filterId = nanoid();
+const Filter = () => {
+  const filterValue = useSelector(getFilter)
+  const dispatch = useDispatch()
   return (
     <>
-      <Lbl htmlFor={filterId}>Find contacts by name</Lbl>
-      <Inp type="text" value={value} onChange={onChange} />
+      <Lbl htmlFor="">Find contacts by name</Lbl>
+      <Inp type="text" value={filterValue} onChange={e => dispatch(filterChange(e.target.value))} />
     </>
   )
 };
@@ -16,6 +18,6 @@ const Filter = ({ value, onChange }) => {
 export default Filter;
 
 Filter.propTypes = {
-  value: PropTypes.string.isRequired,
-  onChange: PropTypes.func.isRequired,
+  filterValue: PropTypes.string,
+  onChange: PropTypes.func,
 };
