@@ -2,7 +2,7 @@ import React from 'react';
 import { Item, Avatar, Name, Number, Phone, Trash } from './ContactItem.styled';
 import { IoPersonOutline, IoCallOutline, IoTrashOutline } from 'react-icons/io5';
 import { useDispatch } from 'react-redux'
-import { deleteContact } from '../Redux/contactsSlice'
+import { deleteContact } from '../../Redux/contactsSlice'
 
 const ContactItem = ({ id, name, number, onDeleteContact }) => {
 const dispatch = useDispatch()

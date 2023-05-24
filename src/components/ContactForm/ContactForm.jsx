@@ -3,7 +3,7 @@ import { nanoid } from "@reduxjs/toolkit";
 import { Form, Label, Input, Button } from './ContactForm.styled';
 import { IoPersonAddOutline } from 'react-icons/io5';
 import { useSelector, useDispatch } from 'react-redux'
-import { addContact, getContacts } from '../Redux/contactsSlice'
+import { addContact, getContacts } from '../../Redux/contactsSlice'
 import PropTypes from 'prop-types';
 
 

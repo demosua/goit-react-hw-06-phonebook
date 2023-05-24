@@ -2,8 +2,8 @@ import ContactItem from "../ContactItem";
 import { Contact } from './Contacts.styled'
 import { useSelector } from 'react-redux'
 import PropTypes from 'prop-types';
-import { getFilter } from '../Redux/filterSlice'
-import { getContacts } from '../Redux/contactsSlice'
+import { getFilter } from '../../Redux/filterSlice'
+import { getContacts } from '../../Redux/contactsSlice'
 
 const Contacts = () => {
   const filter = useSelector(getFilter)

@@ -1,6 +1,6 @@
 import React from "react";
 import { useSelector, useDispatch } from 'react-redux'
-import { filterChange, getFilter } from '../Redux/filterSlice'
+import { filterChange, getFilter } from '../../Redux/filterSlice'
 import PropTypes from 'prop-types';
 import { Lbl, Inp } from './Filter.styled'
 
